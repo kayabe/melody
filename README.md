@@ -19,7 +19,7 @@ your way so you can write real-time apps. Features include:
 ## Install
 
 ```bash
-go get gopkg.in/kayabe/melody.v1
+go get github.com/kayabe/melody
 ```
 
 ## [Example: chat](https://github.com/kayabe/melody/tree/master/examples/chat)
@@ -32,7 +32,7 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"gopkg.in/kayabe/melody.v1"
+	"github.com/kayabe/melody"
 	"net/http"
 )
 
@@ -62,9 +62,8 @@ package main
 
 import (
 	"github.com/labstack/echo"
-	"github.com/labstack/echo/engine/standard"
 	"github.com/labstack/echo/middleware"
-	"gopkg.in/kayabe/melody.v1"
+	"github.com/kayabe/melody"
 	"net/http"
 )
 
@@ -76,12 +75,12 @@ func main() {
 	e.Use(middleware.Recover())
 
 	e.GET("/", func(c echo.Context) error {
-		http.ServeFile(c.Response().(*standard.Response).ResponseWriter, c.Request().(*standard.Request).Request, "index.html")
+		http.ServeFile(c.Response().Writer, c.Request(), "index.html")
 		return nil
 	})
 
 	e.GET("/ws", func(c echo.Context) error {
-		m.HandleRequest(c.Response().(*standard.Response).ResponseWriter, c.Request().(*standard.Request).Request)
+		m.HandleRequest(c.Response().Writer, c.Request())
 		return nil
 	})
 
@@ -89,7 +88,7 @@ func main() {
 		m.Broadcast(msg)
 	})
 
-	e.Run(standard.New(":5000"))
+	e.Start(":5000")
 }
 ```
 
@@ -102,7 +101,7 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"gopkg.in/kayabe/melody.v1"
+	"github.com/kayabe/melody"
 	"net/http"
 	"strconv"
 	"strings"
