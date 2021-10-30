@@ -52,12 +52,11 @@ func TestEcho(t *testing.T) {
 
 	fn := func(msg string) bool {
 		conn, err := NewDialer(server.URL)
-		defer conn.Close()
-
 		if err != nil {
 			t.Error(err)
 			return false
 		}
+		defer conn.Close()
 
 		conn.WriteMessage(websocket.TextMessage, []byte(msg))
 
@@ -173,12 +172,11 @@ func TestEchoBinary(t *testing.T) {
 
 	fn := func(msg string) bool {
 		conn, err := NewDialer(server.URL)
-		defer conn.Close()
-
 		if err != nil {
 			t.Error(err)
 			return false
 		}
+		defer conn.Close()
 
 		conn.WriteMessage(websocket.BinaryMessage, []byte(msg))
 
@@ -240,12 +238,11 @@ func TestMetadata(t *testing.T) {
 
 	fn := func(msg string) bool {
 		conn, err := NewDialer(server.URL)
-		defer conn.Close()
-
 		if err != nil {
 			t.Error(err)
 			return false
 		}
+		defer conn.Close()
 
 		conn.WriteMessage(websocket.TextMessage, []byte(msg))
 
@@ -537,12 +534,11 @@ func TestBroadcastFilter(t *testing.T) {
 
 	fn := func(msg string) bool {
 		conn, err := NewDialer(server.URL)
-		defer conn.Close()
-
 		if err != nil {
 			t.Error(err)
 			return false
 		}
+		defer conn.Close()
 
 		conn.WriteMessage(websocket.TextMessage, []byte(msg))
 
@@ -578,12 +574,11 @@ func TestBroadcastBinaryFilter(t *testing.T) {
 
 	fn := func(msg []byte) bool {
 		conn, err := NewDialer(server.URL)
-		defer conn.Close()
-
 		if err != nil {
 			t.Error(err)
 			return false
 		}
+		defer conn.Close()
 
 		conn.WriteMessage(websocket.BinaryMessage, []byte(msg))
 
@@ -618,11 +613,10 @@ func TestStop(t *testing.T) {
 	defer server.Close()
 
 	conn, err := NewDialer(server.URL)
-	defer conn.Close()
-
 	if err != nil {
 		t.Error(err)
 	}
+	defer conn.Close()
 
 	noecho.m.Close()
 }
@@ -641,11 +635,10 @@ func TestSmallMessageBuffer(t *testing.T) {
 	defer server.Close()
 
 	conn, err := NewDialer(server.URL)
-	defer conn.Close()
-
 	if err != nil {
 		t.Error(err)
 	}
+	defer conn.Close()
 
 	conn.WriteMessage(websocket.TextMessage, []byte("12345"))
 }
@@ -660,11 +653,10 @@ func TestPong(t *testing.T) {
 	defer server.Close()
 
 	conn, err := NewDialer(server.URL)
-	defer conn.Close()
-
 	if err != nil {
 		t.Error(err)
 	}
+	defer conn.Close()
 
 	fired := false
 	echo.m.HandlePong(func(s *Session) {
