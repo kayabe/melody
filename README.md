@@ -1,8 +1,8 @@
 # melody
 
-[![Build Status](https://travis-ci.org/olahol/melody.svg)](https://travis-ci.org/olahol/melody)
-[![Coverage Status](https://img.shields.io/coveralls/olahol/melody.svg?style=flat)](https://coveralls.io/r/olahol/melody)
-[![GoDoc](https://godoc.org/github.com/olahol/melody?status.svg)](https://godoc.org/github.com/olahol/melody)
+[![Build Status](https://travis-ci.org/kayabe/melody.svg)](https://travis-ci.org/kayabe/melody)
+[![Coverage Status](https://img.shields.io/coveralls/kayabe/melody.svg?style=flat)](https://coveralls.io/r/kayabe/melody)
+[![GoDoc](https://godoc.org/github.com/kayabe/melody?status.svg)](https://godoc.org/github.com/kayabe/melody)
 
 > :notes: Minimalist websocket framework for Go.
 
@@ -19,12 +19,12 @@ your way so you can write real-time apps. Features include:
 ## Install
 
 ```bash
-go get gopkg.in/olahol/melody.v1
+go get gopkg.in/kayabe/melody.v1
 ```
 
-## [Example: chat](https://github.com/olahol/melody/tree/master/examples/chat)
+## [Example: chat](https://github.com/kayabe/melody/tree/master/examples/chat)
 
-[![Chat](https://cdn.rawgit.com/olahol/melody/master/examples/chat/demo.gif "Demo")](https://github.com/olahol/melody/tree/master/examples/chat)
+[![Chat](https://cdn.rawgit.com/kayabe/melody/master/examples/chat/demo.gif "Demo")](https://github.com/kayabe/melody/tree/master/examples/chat)
 
 Using [Gin](https://github.com/gin-gonic/gin):
 ```go
@@ -32,7 +32,7 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"gopkg.in/olahol/melody.v1"
+	"gopkg.in/kayabe/melody.v1"
 	"net/http"
 )
 
@@ -64,7 +64,7 @@ import (
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/engine/standard"
 	"github.com/labstack/echo/middleware"
-	"gopkg.in/olahol/melody.v1"
+	"gopkg.in/kayabe/melody.v1"
 	"net/http"
 )
 
@@ -93,16 +93,16 @@ func main() {
 }
 ```
 
-## [Example: gophers](https://github.com/olahol/melody/tree/master/examples/gophers)
+## [Example: gophers](https://github.com/kayabe/melody/tree/master/examples/gophers)
 
-[![Gophers](https://cdn.rawgit.com/olahol/melody/master/examples/gophers/demo.gif "Demo")](https://github.com/olahol/melody/tree/master/examples/gophers)
+[![Gophers](https://cdn.rawgit.com/kayabe/melody/master/examples/gophers/demo.gif "Demo")](https://github.com/kayabe/melody/tree/master/examples/gophers)
 
 ```go
 package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"gopkg.in/olahol/melody.v1"
+	"gopkg.in/kayabe/melody.v1"
 	"net/http"
 	"strconv"
 	"strings"
@@ -162,9 +162,9 @@ func main() {
 }
 ```
 
-### [More examples](https://github.com/olahol/melody/tree/master/examples)
+### [More examples](https://github.com/kayabe/melody/tree/master/examples)
 
-## [Documentation](https://godoc.org/github.com/olahol/melody)
+## [Documentation](https://godoc.org/github.com/kayabe/melody)
 
 ## Contributors
 

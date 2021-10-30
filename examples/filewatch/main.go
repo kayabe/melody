@@ -1,11 +1,13 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
-	"github.com/go-fsnotify/fsnotify"
-	"gopkg.in/olahol/melody.v1"
 	"io/ioutil"
 	"net/http"
+
+	"github.com/kayabe/melody"
+
+	"github.com/fsnotify/fsnotify"
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
