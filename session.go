@@ -210,6 +210,16 @@ func (s *Session) Get(key string) (value interface{}, exists bool) {
 	return
 }
 
+// Delete removes the key/value pair from the session.
+func (s *Session) Delete(key string) {
+	s.rwmutex.Lock()
+	defer s.rwmutex.Unlock()
+
+	if s.Keys != nil {
+		delete(s.Keys, key)
+	}
+}
+
 // MustGet returns the value for the given key if it exists, otherwise it panics.
 func (s *Session) MustGet(key string) interface{} {
 	s.rwmutex.RLock()
