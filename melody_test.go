@@ -228,10 +228,29 @@ func TestMetadata(t *testing.T) {
 	echo := NewTestServer()
 	echo.m.HandleConnect(func(session *Session) {
 		session.Set("stamp", time.Now().UnixNano())
+		session.Set("tmp", time.Now().UnixNano())
 	})
 	echo.m.HandleMessage(func(session *Session, msg []byte) {
+		defer func() {
+			if r := recover(); r != nil {
+				return
+			}
+		}()
+
 		stamp := session.MustGet("stamp").(int64)
 		session.Write([]byte(strconv.Itoa(int(stamp))))
+
+		// Testing Delete
+		session.MustGet("tmp")
+		session.Delete("tmp")
+		if _, ok := session.Get("tmp"); ok {
+			t.Fatal("key 'tmp' should not exist")
+		}
+
+		//
+		session.MustGet("nonexistent")
+
+		t.Fatal("should panic")
 	})
 	server := httptest.NewServer(echo)
 	defer server.Close()
